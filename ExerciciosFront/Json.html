@@ -1,0 +1,19 @@
+<h1 id="teste"></h1>
+
+
+<script>
+    var objeto = { nome: "Thiago", idade: 50, cidade: "Curitiba" };
+
+    alert(objeto.nome + " \n" + objeto.idade + "\n" + objeto.cidade);
+
+    var myJSON = JSON.stringify(objeto);
+
+    document.getElementById("teste").innerHTML = myJSON;
+
+    var obj = JSON.parse(myJSON);
+    
+    alert("Json text object : " + myJSON);
+    alert("Object in javascript: " + obj.nome);
+
+
+</script>
