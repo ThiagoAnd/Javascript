@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+ 	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+		
+		<title>Annual Sales And Website Traffic - 2015</title>
+		
+    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/bootstrap/bootstrap4-alpha3.min.css">
+		<!-- Google Font Roboto -->
+		<link rel="stylesheet" href="assets/fonts/font-roboto.css">
+		
+		<style>	
+			body {
+				background-color: #000000;
+				color: #ffffff;
+				font-family: "Roboto", Helvetica, Arial, sans-serif;
+				font-size: 16px;
+				line-height: 1.5;
+				padding-bottom: 3.5rem;
+				padding-top: 3.5rem;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-weight: 300;
+			}
+
+			hr {
+				border-top: 1px solid #727273;
+				margin-bottom: 2rem;
+				margin-top: 2rem;
+			}
+			
+			#revenue-tag {
+				border-radius: 0px !important;
+				font-size: inherit !important;
+				font-weight: inherit !important;
+			}
+
+			.align-center {
+				text-align: center;
+			}
+
+			.card {
+				background-color: transparent;
+				border: none;
+				margin-bottom: 0px;
+			}
+
+			#sales-doughnut-chart-us, #sales-doughnut-chart-nl, #sales-doughnut-chart-de, #sales-doughnut-chart-vaivai {
+				height: 280px;
+				margin-top: 1rem;
+				width: 100%;
+			}
+
+			#page-views-spline-area-chart, #orders-spline-area-chart, #revenue-spline-area-chart {
+				height: 100px;
+				width: 100%;
+			}
+
+			#users-doughnut-chart, #users-spline-chart {
+				height: 280px; 
+				margin-top: 2rem;
+				width: 100%;
+			}
+
+			#users-countries-bar-chart {
+				height: 360px; 
+				margin-top: 2rem;
+				width: 100%;
+			}
+		</style>
+		
+		<!-- Scripts -->
+		<script src="assets/jquery/jquery-3.1.0.min.js"></script>
+		<script src="assets/tether/tether.min.js"></script>
+		<script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="assets/jquery.scrollspeed/jquery.scrollspeed.min.js"></script>
+		<script src="assets/jquery.inview/jquery.inview.min.js"></script>
+		
+		<script>
+			$(function () {
+				var totalRevenue = 15341110,
+						totalUsers = 7687036;
+				
+				// CanvasJS doughnut chart to show annual sales percentage from United States(US)
+				var salesDoughnutChartUS = new CanvasJS.Chart("sales-doughnut-chart-us", { 
+					animationEnabled: true,
+					backgroundColor: "transparent",
+					title: {
+						fontColor: "#848484",
+						fontSize: 70,
+						horizontalAlign: "center",
+						text: "47%",
+						verticalAlign: "center"
+					},
+					toolTip: {
+						backgroundColor: "#ffffff",
+						borderThickness: 0,
+						cornerRadius: 0,
+						fontColor: "#424242"
+					},
+					data: [
+						{
+							explodeOnClick: false,
+							innerRadius: "96%",
+							radius: "90%",
+							startAngle: 270,
+							type: "doughnut",
+							dataPoints: [
+								{ y: 47, color: "#c70000", toolTipContent: "United States: $<span>" + CanvasJS.formatNumber(Math.round(47 / 100 * totalRevenue), '#,###,###') + "</span>" },
+								{ y: 53, color: "#424242", toolTipContent: null }
+							]
+						}
+					]
+				});
+
+				// CanvasJS doughnut chart to show annual sales percentage from Netherlands(NL)
+				var salesDoughnutChartNL = new CanvasJS.Chart("sales-doughnut-chart-nl", { 
+					animationEnabled: true,
+					backgroundColor: "transparent",
+					title: {
+						fontColor: "#848484",
+						fontSize: 70,
+						horizontalAlign: "center",
+						text: "19%",
+						verticalAlign: "center"
+					},
+					toolTip: {
+						backgroundColor: "#ffffff",
+						borderThickness: 0,
+						cornerRadius: 0,
+						fontColor: "#424242"
+					},
+					data: [
+						{
+							explodeOnClick: false,
+							innerRadius: "96%",
+							radius: "90%",
+							startAngle: 270,
+							type: "doughnut",
+							dataPoints: [
+								{ y: 19, color: "#c70000", toolTipContent: "Netherlands: $<span>" + CanvasJS.formatNumber(Math.round(19 / 100 * totalRevenue), '#,###,###') + "</span>" },
+								{ y: 81, color: "#424242", toolTipContent: null }
+							]
+						}
+					]
+				});
+
+				// CanvasJS doughnut chart to show annual sales percentage from Germany(DE)
+				var salesDoughnutChartDE = new CanvasJS.Chart("sales-doughnut-chart-de", { 
+					animationEnabled: true,
+					backgroundColor: "transparent",
+					title: {
+						fontColor: "#848484",
+						fontSize: 70,
+						horizontalAlign: "center",
+						text: "12%",
+						verticalAlign: "center"
+					},
+					toolTip: {
+						backgroundColor: "#ffffff",
+						borderThickness: 0,
+						cornerRadius: 0,
+						fontColor: "#424242"
+					},
+					data: [
+						{
+							explodeOnClick: false,
+							innerRadius: "96%",
+							radius: "90%",
+							startAngle: 270,
+							type: "doughnut",
+							dataPoints: [
+								{ y: 12, color: "#c70000", toolTipContent: "Netherlands: $<span>" + CanvasJS.formatNumber(Math.round(12 / 100 * totalRevenue), '#,###,###') + "</span>" },
+								{ y: 88, color: "#424242", toolTipContent: null }
+							]
+						}
+					]
+				});
+
+				
+				// CanvasJS doughnut chart to show annual sales percentage from Germany(DE)
+				var salesDoughnutChartTESTE = new CanvasJS.Chart("sales-doughnut-chart-vaivai", { 
+					animationEnabled: true,
+					backgroundColor: "transparent",
+					title: {
+						fontColor: "#848484",
+						fontSize: 70,
+						horizontalAlign: "center",
+						text: "12%",
+						verticalAlign: "center"
+					},
+					toolTip: {
+						backgroundColor: "#ffffff",
+						borderThickness: 0,
+						cornerRadius: 0,
+						fontColor: "#424242"
+					},
+					data: [
+						{
+							explodeOnClick: false,
+							innerRadius: "96%",
+							radius: "90%",
+							startAngle: 270,
+							type: "doughnut",
+							dataPoints: [
+								{ y: 12, color: "#c70000", toolTipContent: "Netherlands: $<span>" + CanvasJS.formatNumber(Math.round(12 / 100 * totalRevenue), '#,###,###') + "</span>" },
+								{ y: 88, color: "#424242", toolTipContent: null }
+							]
+						}
+					]
+				});
+				
+				
+				// jQuery.inview plugin
+				$('.inview').one('inview', function (e, isInView) {
+					if (isInView) {
+						switch (this.id) {
+							case "sales-doughnut-chart-us": salesDoughnutChartUS.render();
+								break;
+							case "sales-doughnut-chart-nl": salesDoughnutChartNL.render();
+								break;
+							case "sales-doughnut-chart-de": salesDoughnutChartDE.render();
+								break;
+							case "sales-doughnut-chart-vaivai": salesDoughnutChartTESTE.render();
+								break;
+						}
+					}
+				});
+		
+			});
+	
+		</script>
+		
+  </head>
+  <body>
+		<div class="container">
+			<h1>Usuarios do sistema</h1>
+			<h5 class="m-t-1">Total: <span class="tag tag-success" id="revenue-tag">18</span></h5>
+			<hr class="m-t-2">
+			
+			<!-- sales doughnut charts -->
+			<div class="row">	
+				<div class="col-md-3">
+					<div class="inview" id="sales-doughnut-chart-us"></div>
+					<h3 class="align-center">Coordenadores</h3>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="inview" id="sales-doughnut-chart-nl"></div>
+					<h3 class="align-center">Supervisores</h3>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="inview" id="sales-doughnut-chart-de"></div>
+					<h3 class="align-center">Técnicos</h3>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="inview" id="sales-doughnut-chart-vaivai"></div>
+					<h3 class="align-center">Clientes</h3>
+				</div>
+			</div>
+			<!-- row sales doughnt charts -->
+			
+			<hr>
+			
+		
+		</div> <!-- container -->
+		
+	</body>
+</html>
