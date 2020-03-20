@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Usando eventos no Javascript</title>
+<script>
+function myFunction()
+{
+var x=document.getElementById("fname");
+x.value=x.value.toUpperCase();
+}
+</script>
+</head>
+<body onload="checkCookies()">
+ 
+Insira seu Nome: <input type="text" id="fname" onchange="myFunction()">
+<p>
+Ao clicarmos fora do input text o texto escrito nele ficará todo em caixa alta.</p>
+<br><br><br>
+
+
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+style="background-color:#D94A38;width:90px;height:20px;padding:40px;">Clique aqui</div>
+ 
+<script>
+function mDown(obj)
+{
+obj.style.backgroundColor="#1ec5e5";
+obj.innerHTML="Solte o clique"
+}
+ 
+function mUp(obj)
+{
+obj.style.backgroundColor="#D94A38";
+obj.innerHTML="Obrigado"
+}
+</script>
+
+
+<BR><BR>
+<script>
+function checkCookies()
+{
+if (navigator.cookieEnabled==true)
+    {
+    alert("Cookies são permitidos")
+    }
+else
+    {
+    alert("Cookies não são permitidos")
+    }
+}
+</script>
+ 
+<p>Irá aparecer um alert dizendo se os cookies estão ou não liberados em seu navegador</p>
+<BR><BR><BR>
+
+<script type="text/javascript" src="/path/to/event-listener.js"></script>
+ 
+<form>
+    <input type="text" name="a" />
+    <input type="submit" />
+</form>
+ 
+<script type="text/javascript">
+var f = document.forms[0];
+addEvent(f, "submit", function( e ) { alert(f.a.value);return false; });
+addEvent(f.a, "keyup", function( e ) { f.a.value=f.a.value.toUpperCase(); });
+</script>
+ 
+</body>
+</html>

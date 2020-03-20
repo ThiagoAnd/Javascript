@@ -1,0 +1,73 @@
+
+<script>
+	function prim (){
+		setTimeout(
+			function(){
+				console.log(1);
+
+			},500
+
+			);
+
+	}
+	function segun (){
+		console.log(2);
+	}
+	prim();
+	segun();
+	/*......................CALLBACK...........*/
+
+	function ola (assunto,callback){
+	//alert('Ola bom dia '+assunto);
+	callback();
+}
+function resposta(){
+	//alert('Bom dia meu amigo');
+}
+
+ola('Thiago',resposta);
+
+
+/*................................*/
+
+	
+
+
+function calculo(raio,callback){
+	var pi = 3.14;
+	var area = pi*Math.pow(parseInt(raio),2);
+	alert('A area é '+area);
+	callback(raio,pi);
+	
+	
+}
+
+function circunferencia (raio,pi){
+	//var raio = document.getElementById('raio').value;
+	var comprimento = pi*2*raio;
+	alert('A circunferencia é '+comprimento);
+
+}
+
+function total(){
+
+	alert('entrou no total');
+}
+
+
+
+
+
+
+
+</script>
+
+<input type="text" name="" id="raio" placeholder="Digite o raio">
+
+
+
+
+<input type="submit" name="" onclick="calculo(document.getElementById('raio').value,circunferencia)">
+
+
+

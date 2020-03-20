@@ -1,0 +1,215 @@
+	<html>
+	<head>
+		<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/estilo.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+	<br><br>
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-4"></div>
+			<div class="col-md-3" >
+				<input class="form-control input-lg" style="width: 100%" type="text" id="campo" placeholder="0" name="campo"disabled="" /><br><br>
+
+				<div class="row"><br><br>
+					<div class="col-md-3"> 
+						<button class="btn btn-lg btn-secondary"  onclick="conta('7')">7</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('8')">8</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('9')">9</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-primary" onclick="conta('-')">-</button>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('4')">4</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('5')">5</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary " onclick="conta('6')">6</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-primary" onclick="conta('+')">+</button>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('1')">1</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" onclick="conta('2')">2</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary " onclick="conta('3')">3</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-primary" onclick="conta('*')">*</button>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-secondary" style="width: 100%" onclick="conta('0')">0</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-danger " onclick="resetar()">C</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-success " onclick="conta('=')">=</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-primary" onclick="conta('/')">/</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-md-4 ml-5" ><h3 id="exibir"></h3></div>
+
+		</div>
+
+	</div><br>
+
+	</html>
+
+
+	<script>
+		var contas ={
+
+		};
+
+		localStorage.setItem("flag","0");
+		localStorage.setItem("cont","0");
+		localStorage.removeItem("n1");
+		localStorage.removeItem("n2");
+		function resetar(){
+			localStorage.setItem("flag","0");
+			localStorage.removeItem("n1");
+			localStorage.removeItem("n2");
+			localStorage.removeItem("operador");
+			document.getElementById("campo").value="";
+			document.getElementById("campo").placeholder="0";
+		}
+		function  conta(n){
+
+			if ((localStorage.getItem("flag")=="1")&&(n=="=")){
+				localStorage.setItem("flag","2");
+
+				var n1 = parseInt(localStorage.getItem("n1"));
+				var n2 = parseInt(localStorage.getItem("n2"));
+				var operador = localStorage.getItem("operador");
+				var resultado;
+				switch(operador){
+					case "+":
+					resultado=n1+n2;
+					//alert(resultado);
+					break;
+					case "-":
+					resultado=n1-n2;
+					break;
+					case "*":
+					resultado=n1*n2;
+					break;
+					case "/":
+					resultado=n1/n2;
+					break;
+				}
+				localStorage.removeItem("n1");
+			localStorage.removeItem("n2");
+			localStorage.removeItem("operador");
+				
+			}
+
+			if (localStorage.getItem("flag")=="1"){
+				var n2;
+				if(localStorage.getItem("n2")==null){
+					n2=n;
+				}else{
+
+					n2 = localStorage.getItem("n2");
+					n2 = n2+''+n;
+
+				}
+				localStorage.setItem("n2",n2);
+				
+			}
+
+			if ( ((n=="+")|| (n=="-") || (n=="*")||(n=="/")) ){
+
+				if(localStorage.getItem("flag")=="0"){
+					if((localStorage.getItem("n1")==null)){
+						resetar();
+						document.getElementById("campo").placeholder="ERROR";
+						return;
+					}else{
+						localStorage.setItem("flag","1");
+						localStorage.setItem("operador",n);
+					}
+				} else{
+					localStorage.setItem("operador",n);
+					//resetar();
+					//document.getElementById("campo").placeholder="ERROR";
+					//return;
+				}
+
+
+			}
+
+			if (localStorage.getItem("flag")=="0"){
+				if(n=="="){
+					resetar();
+					document.getElementById("campo").placeholder="ERROR";
+					return;
+				}
+				var n1;
+				if(localStorage.getItem("n2")!=null){
+					localStorage.removeItem("n1");
+					localStorage.removeItem("n2");
+					localStorage.removeItem("operador");
+					document.getElementById("campo").value="";
+				}
+				if (localStorage.getItem("n1")==null){
+					n1 = document.getElementById("campo").value;
+				}else{
+					n1 = localStorage.getItem("n1");
+				}
+				n1 = n1+''+n;
+				localStorage.setItem("n1",n1);
+				//alert(document.getElementById("campo").value);
+				
+			}
+
+			var visor = document.getElementById("campo").value;
+			if(localStorage.getItem("flag")=="2"){
+				visor = visor+''+n;
+				visor = visor+''+resultado;
+				var cont = parseInt(localStorage.getItem("cont"))+1;
+				localStorage.setItem("cont",cont);
+				contas["conta "+(localStorage.getItem("cont"))]="&nbsp;"+visor;
+				visor = resultado;
+				//console.log(contas);
+
+				document.getElementById("exibir").innerHTML="";
+				for(atributo in contas){ 
+
+					document.getElementById("exibir").innerHTML += atributo + ': ' + contas[atributo] + '<br>'
+				}
+					localStorage.setItem("flag","0");
+					localStorage.setItem("n1",visor);
+			} else{
+				visor = visor+''+n;
+			}
+			document.getElementById("campo").value=visor;
+
+			//alert("n1= "+localStorage.getItem("n1"));
+			//alert("n2= "+localStorage.getItem("n2"));
+			//alert("flag= "+localStorage.getItem("flag"));
+
+		}
+
+	</script>

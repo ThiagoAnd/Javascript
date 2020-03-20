@@ -1,0 +1,66 @@
+<html>
+<body>
+<h1>TITULO</h1>
+<br><p>Testando um paragrafo</p>
+<p id="exemplo"></p>
+</body>
+</html>
+
+<script>
+var x,y;
+x=4;y=16;
+z=x+y;
+document.write("O resultado é: "+z+"<br><br>");
+//window.alert("testando");
+for (var i =1;i<=10;i++){
+document.write(i);
+if(i<10){document.write(" , ");}
+}
+
+function soma(){
+alert("A soma de "+x+" e "+y+" é : "+(x+y));
+}
+function subtracao(){
+alert("A subtracao de "+x+" e "+y+" é : "+(x-y));
+}
+function divisao(){
+alert("A divisao de "+x+" e "+y+" é : "+(x/y));
+}
+function multiplicacao(){
+alert("A multiplicacao de "+x+" e "+y+" é : "+(x*y));
+}
+function resultado(){
+document.write("O resultado é: "+z+"<br>");
+
+}
+
+//document.getElementById("exemplo").innerHTML=4+20;
+</script>
+	<h2>Exemplo com função</h2>
+	<br><input type=button onclick="soma()" value="Soma"> <br>
+	<input type=button onclick="subtracao()" value="Subtracao"> <br>
+	<input type=button onclick="divisao()" value="Divisao"> <br>
+	<input type=button onclick="multiplicacao()" value="Multiplicacao"> 
+    
+	<h2>Exemplo direto com alerta</h2>
+	<br><input type=button onclick="window.alert(x+y);" value="Soma"> <br>
+	<input type=button onclick="window.alert(x-y);" value="Subtracao"> <br>
+	<input type=button onclick="window.alert(x/y);" value="Divisao"> <br>
+	<input type=button onclick="window.alert(x*y);" value="Multiplicacao">
+    
+    <h2>Exemplo clicando no botao e aparecendo no html</h2>
+     <h3 id="resultado">RESULTADO</h3>
+    <br><input type=button onclick="document.getElementById('resultado').innerHTML=x+y;" value="Soma"> <br>
+	<input type=button onclick="document.getElementById('resultado').innerHTML=x-y;" value="Subtracao"> <br>
+	<input type=button onclick="document.getElementById('resultado').innerHTML=x/y;" value="Divisao"> <br>
+	<input type=button onclick="document.getElementById('resultado').innerHTML=x*y;" value="Multiplicacao">
+    
+     <h2>Exemplo clicando no botao e aparecendo no html com inputtt</h2>
+     <input id="result" type="text" >
+    <br><input type=button onclick="document.getElementById('result').value=x+y;" value="Soma"> <br>
+	<input type=button onclick="document.getElementById('result').value=x-y;" value="Subtracao"> <br>
+	<input type=button onclick="document.getElementById('result').value=x/y;" value="Divisao"> <br>
+	<input type=button onclick="document.getElementById('result').value=x*y;" value="Multiplicacao">
+
+	
+	<h2>Exemplo Soma com innerHTML</h2>

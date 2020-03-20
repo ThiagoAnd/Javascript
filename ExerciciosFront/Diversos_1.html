@@ -1,0 +1,205 @@
+<html>
+<body>
+	<h1>TITULO</h1>
+	<br><p>Testando um paragrafo</p>
+	<p id="exemplo"></p>
+</body>
+</html>
+
+<script>
+	var x,y;
+	x=4;y=16;
+	z=x+y;
+	document.write("O resultado é: "+z+"<br><br>");
+//window.alert("testando");
+for (var i =1;i<=10;i++){
+	document.write(i);
+	if(i<10){document.write(" , ");}
+}
+
+function soma(){
+	alert("A soma de "+x+" e "+y+" é : "+(x+y));
+}
+function subtracao(){
+	alert("A subtracao de "+x+" e "+y+" é : "+(x-y));
+}
+function divisao(){
+	alert("A divisao de "+x+" e "+y+" é : "+(x/y));
+}
+function multiplicacao(){
+	alert("A multiplicacao de "+x+" e "+y+" é : "+(x*y));
+}
+function resultado(){
+	document.write("O resultado é: "+z+"<br>");
+
+}
+//document.getElementById("exemplo").innerHTML=4+20;
+</script>
+<h2>Exemplo com função</h2>
+<br><input type=button onclick="soma()" value="Soma"> <br>
+<input type=button onclick="subtracao()" value="Subtracao"> <br>
+<input type=button onclick="divisao()" value="Divisao"> <br>
+<input type=button onclick="multiplicacao()" value="Multiplicacao"> 
+
+<h2>Exemplo direto com alerta</h2>
+<br><input type=button onclick="window.alert(x+y);" value="Soma"> <br>
+<input type=button onclick="window.alert(x-y);" value="Subtracao"> <br>
+<input type=button onclick="window.alert(x/y);" value="Divisao"> <br>
+<input type=button onclick="window.alert(x*y);" value="Multiplicacao">
+
+<h2>Exemplo clicando no botao e aparecendo no html</h2>
+<h3 id="resultado">RESULTADO</h3>
+<br><input type=button onclick="document.getElementById('resultado').innerHTML=x+y;" value="Soma"> <br>
+<input type=button onclick="document.getElementById('resultado').innerHTML=x-y;" value="Subtracao"> <br>
+<input type=button onclick="document.getElementById('resultado').innerHTML=x/y;" value="Divisao"> <br>
+<input type=button onclick="document.getElementById('resultado').innerHTML=x*y;" value="Multiplicacao">
+
+<h2>Exemplo clicando no botao e aparecendo no html com input</h2>
+<input id="result" type="text" >
+<br><input type=button onclick="document.getElementById('result').value=x+y;" value="Soma"> <br>
+<input type=button onclick="document.getElementById('result').value=x-y;" value="Subtracao"> <br>
+<input type=button onclick="document.getElementById('result').value=x/y;" value="Divisao"> <br>
+<input type=button onclick="document.getElementById('result').value=x*y;" value="Multiplicacao">
+<h2>Exemplo de multiplicação com alert</h2>
+<input type=button onclick="window.alert('A multiplicação é: '+(5*8))" value="multiplicação">
+<h2>Exemplo de soma com innerHTML</h2>
+<p id="somar"></p>
+
+<h2>Exemplo de subtração com document.Write</h2>
+
+<script>
+	document.getElementById('somar').innerHTML="A soma é: "+(8+5);
+	document.write("A subtração é: "+(5-8));
+	
+</script>
+<h2>Exemplos de eventos</h2>
+
+<br>
+<form onSubmit="window.alert('Oi Thiago')">
+	<h5>ON SUBMIT</h5>
+	<input type=submit  value="onSubmit">
+</form>
+
+<h5>ON MOUSE MOVE e ON MOUSE OUT</h5>
+<span id="exemplo" onmouseMove="this.style.color='red'" onmouseout="this.style.color='black'">Passe o mouse aqui!</span>
+
+
+
+<input id="cor" type=button value="teste">
+<script>
+	document.getElementById("cor").onclick=function(){
+		this.style.color='red'
+	};
+</script>
+<p>=================================================================================================================================</p>
+<br><br>
+
+
+
+<select id="tipo"  onclick=" verificacao()"  style="margin-left:50px;">
+	<option value="" selected>Tipo</option>
+	<option value="Cachorro">Cachorro</option>
+	<option value="Gato">Gato</option>
+</select>
+<select id="cachorro" onclick=" verificarValidacoes() " style="margin-left:50px;">
+	<option value="" selected>Raça Cachorro</option>
+	<option >Poodle</option>
+	<option>Yorkshire</option>
+</select>
+<select id="gato" onclick="verificarValidacoes()" style="margin-left:50px;">
+	<option selected>Raça Gato</option>
+	<option>Persa</option>
+	<option>Siamês</option>
+</select>
+<div id="esconder"></div>
+<div id="esconder2"></div>
+<script>
+	
+	function verificarValidacoes(){
+		if (document.getElementById("tipo").value ==""){
+			alert('É necessario escolher um tipo de animal')
+		}
+	}
+	function verificacaoTipo(){
+		if (document.getElementById("tipo").value=="Cachorro"){
+			document.getElementById("gato").disabled=true
+			document.getElementById("cachorro").disabled=false
+			document.getElementById("esconder").innerHTML = "<select><option>TESTANDO</option></select>"
+			document.getElementById("esconder2").innerHTML=""
+		}
+		if (document.getElementById("tipo").value=="Gato"){
+			document.getElementById("cachorro").disabled=true
+			document.getElementById("gato").disabled=false
+			document.getElementById("esconder2").innerHTML = "<select><option>TESTANDO2</option></select>"
+			document.getElementById("esconder").innerHTML=""
+
+
+		}
+		if (document.getElementById("tipo").value==""){
+			document.getElementById("cachorro").disabled=false
+			document.getElementById("gato").disabled=false
+		}
+	}
+	function verificacao(){
+		if(document.getElementById("nome").value ==""){
+			alert('É necessario preencher o nome do animal')
+			document.getElementById("nome").focus()
+			
+		}else{
+			verificacaoTipo();
+		}
+	}
+	//------------------o onchange nesta função abaixo significa que na mudança de select executa a função abaixo
+	//document.getElementById("tipo").onchange = function(){
+	//alert("testando onchange");
+	//o this abaixo referencia o valor do ID "tipo"
+	//switch(this.value){
+//case Cachorro:
+//disabled gato
+//enabled  cachorro
+//break
+//case Gato:
+//disabled cachorro
+//enabled gato
+//break
+//default:
+//enabled cachorro
+//enabled cachorro
+//break
+	//----------------------------------}
+
+
+
+</script>
+<br><br><br>
+
+<select id= "teste5">
+	<option value="" selected>Escolhaaaa</option>
+	<option value="cachorro">cachorro </option>
+	<option value="gato">gato </option>
+</select>
+<br><br>
+<div id="div"></div>
+<br><br>
+<script>
+	document.getElementById("teste5").onchange = function(){
+switch(this.value){
+
+	case cachorro:
+	document.getElementById("div").innerHTML="<select><option>TESTANDO2</option></select>"
+	break
+	case gato:
+		document.getElementById("div").innerHTML="TESTE GATO"
+
+	break
+}
+	}
+	//vc pode declarar direto o valor de Y do parametro, por exemplo y=2, então caso a pessoa somar sem colocar o segundo argumento, o y assume o
+	//valor 2, e caso tiver um valor ele sobrepoem
+	//function soma (x,y){
+	//	return x+y;
+	//}
+	//<input type="button" value ="Clique aqui!" onclick="alert(soma(2,2))">
+</script>
+
+
